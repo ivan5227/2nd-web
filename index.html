@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex — ДЗ №2</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <h1>Покедекс</h1>
+        <p class="subtitle">Поиск данных через PokéAPI (HTTP GET + async/await)</p>
+
+        <form id="search-form" class="search-bar">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Имя или ID (например, ditto, pikachu, 25)..."
+            autocomplete="off"
+          />
+          <button type="submit" id="search-btn" class="btn btn-primary">Найти</button>
+          <button type="button" id="random-btn" class="btn btn-secondary">Случайный</button>
+          <button type="button" id="reset-btn" class="btn btn-secondary">Сбросить</button>
+        </form>
+      </header>
+
+      <main class="content">
+        <div id="status-container" class="status-container" aria-live="polite"></div>
+        <div id="pokemon-grid" class="pokemon-grid"></div>
+      </main>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
