@@ -11,9 +11,6 @@ export const STARTER_POKEMONS = [
   'ditto'
 ];
 
-/**
- * Получение покемона по имени или ID (код по слайду 102 лекции)
- */
 export async function getPokemon(nameOrId) {
   const url = BASE_URL + encodeURIComponent(nameOrId.toString().toLowerCase().trim());
   const response = await fetch(url);
