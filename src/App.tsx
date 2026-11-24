@@ -6,7 +6,6 @@ import { StatusMessage } from './components/StatusMessage/StatusMessage';
 import type { LoadState } from './types/pokemon';
 import styles from './App.module.css';
 
-// TODO: можно вынести логику загрузки в отдельный хук или добавить локальную фильтрацию по загруженным карточкам
 export default function App() {
   const [query, setQuery] = useState('');
   const [searchTarget, setSearchTarget] = useState<string | number | null>(null);
@@ -52,7 +51,10 @@ export default function App() {
 
   useEffect(() => {
     if (loadState.status === 'ready') {
-      document.title = `Покедекс — найдено: ${loadState.pokemons.length}`;
+      document.title =
+        loadState.pokemons.length > 0
+          ? `Покедекс — найдено: ${loadState.pokemons.length}`
+          : 'Покедекс — ничего не найдено';
     } else {
       document.title = 'Pokédex — ДЗ №3';
     }
@@ -82,7 +84,7 @@ export default function App() {
   }
 
   return (
-    <div>
+    <>
       <header className={styles.header}>
         <h1 className={styles.title}>Покедекс</h1>
         <p className={styles.subtitle}>Поиск данных через PokéAPI</p>
@@ -103,6 +105,6 @@ export default function App() {
           <PokemonGrid pokemons={loadState.pokemons} />
         )}
       </main>
-    </div>
+    </>
   );
 }

@@ -13,7 +13,6 @@ export const STARTER_POKEMONS: string[] = [
   'ditto',
 ];
 
-// TODO: можно добавить AbortSignal для отмены запроса и простой кэш
 export async function getPokemon(nameOrId: string | number): Promise<Pokemon | null> {
   const query = nameOrId.toString().toLowerCase().trim();
   const response = await fetch(BASE_URL + encodeURIComponent(query));
@@ -32,7 +31,13 @@ export async function getPokemon(nameOrId: string | number): Promise<Pokemon | n
 
 export async function getInitialPokemons(): Promise<Pokemon[]> {
   const results = await Promise.all(
-    STARTER_POKEMONS.map((name) => getPokemon(name))
+    STARTER_POKEMONS.map(async (name) => {
+      try {
+        return await getPokemon(name);
+      } catch {
+        return null;
+      }
+    })
   );
   return results.filter((pokemon) => pokemon !== null);
 }
