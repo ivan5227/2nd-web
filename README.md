@@ -1,6 +1,6 @@
 # Покедекс
 
-Домашнее задание №2.
+Домашнее задание №3 (переписано с ДЗ №2 на React + TypeScript).
 
 Можно найти покемона по имени или номеру, открыть случайного или сбросить результаты.
 
@@ -11,9 +11,11 @@
 - Данилин Егор
 - Григорьичев Иван
 
-## API
+## Что внутри
 
-[PokéAPI](https://pokeapi.co/) — бесплатный публичный API с данными о покемонах.
+- React + TypeScript (`strict: true`)
+- Vite + CSS Modules
+- Zod для проверки ответов от [PokéAPI](https://pokeapi.co/)
 
 ## Запуск
 
@@ -22,9 +24,10 @@ npm install
 npm run dev
 ```
 
-## Сборка
+Проверка типов и сборка:
 
 ```bash
+npm run typecheck
 npm run build
 npm run preview
 ```
